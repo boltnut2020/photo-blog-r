@@ -1,0 +1,46 @@
+<%= provide(:body_class, "post-template-default single single-post postid-652 single-format-standard wp-embed-responsive site-layout-fluid archive-layout-masonry custom-header-enabled global-layout-no-sidebar") %>
+
+<div id="content" class="site-content">
+  <div class="container">
+    <div class="inner-wrapper">
+      <div id="separator-title">
+        <div class="single-link-previous">
+        <%= link_to @article.prev do %>
+        <i class="fa fa-long-arrow-left"></i>
+        <% end %>
+        </div><!-- .single-link-previous -->
+      
+        <h1 class="entry-title"><%= @article.title %></h1>
+        <div class="single-link-next">
+          <%= link_to @article.next do %>
+            <i class="fa fa-long-arrow-right"></i>
+          <% end %>
+        </div><!-- .single-link-next -->
+      
+        <div class="single-post-meta">
+          <span class="posted-on">
+            <%= link_to @article, rel: 'bookmark' do %>
+            <time class="entry-date published" datetime="<%= @article.created_at %>+07:00"><%= @article.created_at %></time>
+            <time class="updated" datetime="<%= @article.updated_at %>+07:00"><%= @article.updated_at %></time>
+          <% end %>
+          </span>
+        </div><!-- .single-post-meta -->
+      </div><!-- #separator-title -->
+      
+      <div id="primary" class="content-area">
+        <main id="main" class="site-main" role="main">
+          <article id="post-<%= @article.id %>" class="post-<%= @article.id %> post type-post status-publish format-standard has-post-thumbnail hentry category-story-of-bangkok category-photokatsu tag-x-t30 tag-xf50f2wr tag-25 tag-32">
+            <div class="entry-content">
+              <a href="<%= @article.image %>" class="fancyboxforwp" data-fancybox="gallery"><img width="640" height="427" src="<%= @article.image %>" class="aligncenter wp-post-image" alt="" srcset="<%= @article.image %> 1024w, <%= @article.image %> 300w, <%= @article.image %> 768w" sizes="(max-width: 640px) 100vw, 640px"></a>		
+              <%= simple_format(@article.intro) %>
+              <%= simple_format(@article.contents) %>
+            </div><!-- .entry-content -->
+            <footer class="entry-footer">
+                <span class="cat-links">Posted in 	<%= link_to @article.category.name, @article.category if @article.category.present? %>
+            </footer><!-- .entry-footer -->
+          </article><!-- #post-## -->
+        </main><!-- #main -->
+      </div><!-- #primary -->
+    </div><!-- .inner-wrapper -->
+  </div><!-- .container -->
+</div><!-- #content -->

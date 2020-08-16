@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  youtube_id: MyString
+  time: MyString
+  origin: MyText
+  lang: MyString
+  description: MyText
+
+two:
+  youtube_id: MyString
+  time: MyString
+  origin: MyText
+  lang: MyString
+  description: MyText

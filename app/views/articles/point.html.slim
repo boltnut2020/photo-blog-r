@@ -1,0 +1,71 @@
+.col.s12.m6
+  .card
+    .card-image
+      .slider
+        ul.slides
+          - @articles.each do |article|
+            - if !article.image.blank?
+              li
+                |  <img src="
+                = article.image
+                | "> 
+                .caption.center-align
+                  h3
+                    = article.title
+                  h5.light.grey-text.text-lighten-3
+                    | .
+.col.s12.m6
+  div
+    .card-content
+      ul.article-list
+        - @articles.each do |article|
+          li.card-panel
+            p.title
+              span
+                = link_to article.title, article
+            dl.opacity
+              dt
+                i.far.fa-money-bill-alt
+                | 価格
+              - if article.price
+                dd
+                  = article.price if article.price?
+                  = article.country.currency_code
+                  | ≒
+                  =  article.price * article.country.rate_jpy
+                  | 円 
+                  - if !article.price_explain.blank?
+                    p.price_explain
+                      | (
+                      = article.price_explain
+                      | )
+                - if article.price_origin?
+                  dt.col
+                    i.far.fa-money-bill-alt
+                    | 価格（日本）
+                  dd
+                    = article.price_origin
+                    | 円 
+                    = (article.price_origin/(article.price * article.country.rate_jpy)).to_d.round(3) * 100
+                    | % 
+              dt
+                i.fas.fa-map-marker-alt
+                | 場所
+              dd
+                = article.country.name
+                |  / 
+                = article.city.name
+                |  / 
+                = article.area.name
+              - if article.point.present?
+                dt
+                  i.fas.fa-map-marker-alt
+                  | お店
+                dd
+                  = article.point.name if article.point.name
+              dt
+                i.fas.fa-calendar-week
+              dd
+                = article.price_date.in_time_zone('Tokyo').strftime('%Y年%m月%d日 %H:%M') if article.price_date
+script
+  |  window.addEventListener('load', function() { var elems = document.querySelectorAll('.slider'); //var instances = M.Slider.init(elems, options); var instances = M.Slider.init(elems); instance.start(); }); 

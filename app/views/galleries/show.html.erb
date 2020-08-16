@@ -1,0 +1,97 @@
+<%= provide(:body_class, "post-template-default single single-post postid-652 single-format-standard wp-embed-responsive site-layout-fluid archive-layout-masonry custom-header-enabled global-layout-no-sidebar") %>
+
+<div id="content" class="site-content">
+<div class="container">
+<div class="inner-wrapper">
+<div id="separator-title">
+<div class="single-link-previous">
+<%= link_to @gallery.prev do %>
+<i class="fa fa-long-arrow-left"></i>
+<% end %>
+</div><!-- .single-link-previous -->
+
+<h1 class="entry-title"><%= @gallery.title %></h1>
+<div class="single-link-next">
+<%= link_to @gallery.next do %>
+<i class="fa fa-long-arrow-right"></i>
+<% end %>
+</div><!-- .single-link-next -->
+
+<div class="single-post-meta">
+<span class="posted-on">
+<%= link_to @gallery, rel: 'bookmark' do %>
+<time class="entry-date published" datetime="<%= @gallery.created_at %>+07:00"><%= @gallery.created_at %></time>
+<time class="updated" datetime="<%= @gallery.updated_at %>+07:00"><%= @gallery.updated_at %></time>
+<% end %>
+</span>
+<span class="byline">
+<span class="author vcard"></span>
+</span>            
+</div><!-- .single-post-meta -->
+</div><!-- #separator-title -->
+
+<div id="primary" class="content-area">
+<main id="main" class="site-main" role="main">
+
+
+
+<article id="post-<%= @gallery.id %>" class="post-<%= @gallery.id %> post type-post status-publish format-standard has-post-thumbnail hentry category-story-of-bangkok category-photokatsu tag-x-t30 tag-xf50f2wr tag-25 tag-32">
+
+<div class="entry-content">
+<a href="<%= @gallery.path %>" class="fancyboxforwp" data-fancybox="gallery"><img width="640" height="427" src="<%= @gallery.path %>" class="aligncenter wp-post-image" alt="" srcset="<%= @gallery.path %> 1024w, <%= @gallery.path %> 300w, <%= @gallery.path %> 768w" sizes="(max-width: 640px) 100vw, 640px"></a>
+
+<%= simple_format(@gallery.episode) %>
+
+
+
+<div>
+<dl>
+<dt>ロケーションポイント</dt>
+<dd><%= @gallery.point.name %> <%= @gallery.point.city.name %>(<%= @gallery.point.name_en %> <%= @gallery.point.city.name_en %>)</dd>
+<dd><%= @gallery.point.description %></dd>
+<dt>シティ</dt>
+<dd><%= @gallery.point.city.name %> (<%= @gallery.point.city.name_en %>)</dd>
+<dd><%= @gallery.point.city.description %></dd>
+<dt>国</dt>
+<dd><%= @gallery.point.city.country.name %> (<%= @gallery.point.city.country.name_en %>)</dd>
+
+<dl>
+</div>
+
+
+</div><!-- .entry-content -->
+
+<!--
+<footer class="entry-footer">
+<span class="cat-links">Posted in </span>
+</footer>--><!-- .entry-footer -->
+
+</article><!-- #post-## -->
+
+<div class="masonry-wrapper">
+<h4><%= "おなじエリア「#{@point_name}」の写真" %> </h4>
+<div id="masonry-loop">
+<% @points.each do | gallery | %>
+<% next if !gallery.path.present?%>
+<article id="post-<%= gallery.id %>" class="masonry-entry post-<%= gallery.id %> post type-post status-publish format-standard has-post-thumbnail hentry category-fashion">
+
+<div class="masonry-thumbnail post-item">
+<a href="<%= gallery.path %>" class="post-thumb popup-link">
+<img width="640" height="426" src="<%= gallery.path %>" class="attachment-large size-large wp-post-image" alt="" srcset="<%= gallery.path%> 1024w, <%= gallery.path %> 300w, <%= gallery.path %>" sizes="(max-width: 640px) 100vw, 640px" /></a>
+<div class="post-content">
+<a href="<%= gallery.path %>" class="popup-link"><i class="fa fa-eye"></i></a>
+<a href="/galleries/<%= gallery.id %>"><i class="fa fa-link"></i></a>
+<h2><%= link_to gallery.title, gallery %></h2>
+</div>
+</div><!-- .masonry-thumbnail -->
+</article><!-- #post-## -->
+<% end %>
+
+</div><!-- #masonry-loop -->
+</div><!-- .masonry-wrapper -->
+
+</main><!-- #main -->
+</div><!-- #primary -->
+</div><!-- .inner-wrapper -->
+</div><!-- .container -->
+</div><!-- #content -->

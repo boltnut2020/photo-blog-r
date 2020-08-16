@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120398885-4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-120398885-4');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title><%= "#{@title}(#{@point_name})| " if @title.present? %>Asian Story</title>
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<%= stylesheet_link_tag "font-awesome.min", :media => "all" %>
+<%= stylesheet_link_tag "/photo-perfect/third-party/photobox/photobox.min.css", :media => "all" %>
+<%= stylesheet_link_tag "photo-perfect", :media => "all" %>
+<script type='text/javascript' src='/photo-perfect/wp-includes/js/jquery/jquery.js'></script>
+<script type='text/javascript' src='/photo-perfect/wp-includes/js/jquery/jquery-migrate.min.js'></script>
+<noscript><style>.woocommerce-product-gallery{ opacity: 1 !important; }</style></noscript>
+</head>
+
+<body class="<%= yield(:body_class) %>">
+
+<div id="page" class="container hfeed site">
+<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+<header id="masthead" class="site-header" role="banner">
+<div id="category-menu" class="clear-fix header-navigation">
+<div class="container">
+<button class="nav-list-btn"><i class="fa fa-list"></i><span>Category</span></button>
+<div class="category-list-wrapper">
+<ul>
+<% @categories.each do | category | %>
+ <li class="cat-item cat-item-<%= category.id %>"><%= link_to category.name, category %></li>
+<% end %>
+</ul>
+</div><!-- .category-list-wrapper -->
+</div><!-- .container -->
+</div><!-- #category-menu -->
+
+<div class="container">
+<div class="site-branding">
+<div id="site-identity">
+<h1 class="site-title"><a href="/" rel="home">TEST PHOTO BLOG</a></h1>
+
+<p class="site-description">TEST PHOTO BLOG USING ACTIVE ADMIN</p>
+</div><!-- #site-identity -->
+
+</div><!-- .site-branding -->
+
+</div><!-- .container -->
+
+</header><!-- #masthead -->    <div id="featured-banner" class="featured-banner">
+<div class="item">
+<a href="/" rel="home">
+<!--<img src="/photo-perfect/wp-content/themes/images/bg-flower001.jpg" width="1600"  alt="Photo Perfect">-->
+<img src="<%= @header_image_url %>" style="filter: grayscale(100%); height:300px; " alt="Photo Perfect">
+</a>
+</div><!-- .item -->
+</div><!-- #featured-banner -->
+<%= yield %>
+<footer id="colophon" class="site-footer" role="contentinfo"><div class="container">    
+<div class="inner-wrapper">
+
+<div class="footer-left">
+<div class="widget photo_perfect_widget_social"><ul id="menu-social-menu" class="menu"><li id="menu-item-170" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-170"><a href="https://twitter.com/higfoto"><span class="screen-reader-text">Twitter</span></a></li></ul></div>                  <div class="copyright">
+Copyright. TEST PHOTO BLOG All rights reserved.          </div><!-- .copyright -->
+</div><!-- .footer-left -->
+
+<div class="footer-right">
+<div id="footer-navigation" class="menu-header-menu-container"><ul id="menu-header-menu" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15"><a href="/">Home</a></li>
+</ul></div>                <div class="site-info">
+Photo Perfect by <a href="https://wenthemes.com/" rel="designer" target="_blank">WEN Themes</a>        </div><!-- .site-info -->
+
+</div><!-- .footer-right -->
+
+</div><!-- .inner-wrapper -->
+</div><!-- .container --></footer><!-- #colophon -->
+</div><!-- #page --><a href="#page" class="scrollup" id="btn-scrollup"><i class="fa fa-level-up"></i></a>
+<script type='text/javascript' src='/photo-perfect/wp-content/themes/js/navigation.min.js'></script>
+<script type='text/javascript' src='/photo-perfect/wp-content/themes/js/skip-link-focus-fix.min.js'></script>
+<script type='text/javascript' src='/photo-perfect/wp-content/themes/js/custom.min.js'></script>
+<script type='text/javascript' src='/photo-perfect/third-party/imageloaded/imagesloaded.pkgd.min.js'></script>
+<script type='text/javascript' src='/photo-perfect/third-party/photobox/jquery.photobox.min.js'></script>
+<script type='text/javascript' src='/photo-perfect/wp-includes/js/imagesloaded.min.js'></script>
+<script type='text/javascript' src='/photo-perfect/wp-includes/js/wp-embed.min.js'></script>
+<script type='text/javascript' src='/photo-perfect/wp-includes/js/masonry.min.js'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var PhotoPerfectScreenReaderText = {"expand":"<span class=\"screen-reader-text\">expand child menu<\/span>","collapse":"<span class=\"screen-reader-text\">collapse child menu<\/span>"};
+/* ]]> */
+</script>
+</body>
+</html>

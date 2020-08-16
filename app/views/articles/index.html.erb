@@ -1,0 +1,62 @@
+<%= provide(:body_class, "home blog wp-embed-responsive site-layout-fluid archive-layout-masonry custom-header-enabled global-layout-no-sidebar") %>
+
+<div id="content" class="site-content">
+<div class="container">
+<div class="inner-wrapper">
+
+<div id="separator-title">
+<span class="title-tag">
+<img src="/photo-perfect/wp-content/themes/images/title-tag.png" alt="" />
+</span><!-- .title-tag -->
+</div><!-- #separator-title -->
+
+<div id="primary" class="content-area">
+<main id="main" class="site-main" role="main">
+
+<div class="masonry-wrapper"><div id="masonry-loop">
+<% @galleries.each do | gallery | %>
+<% next if !gallery.path.present?%>
+<article id="post-<%= gallery.id %>" class="masonry-entry post-<%= gallery.id %> post type-post status-publish format-standard has-post-thumbnail hentry category-fashion">
+
+<div class="masonry-thumbnail post-item">
+<a href="<%= gallery.path %>" class="post-thumb popup-link">
+<img width="640" height="426" src="<%= gallery.path %>" class="attachment-large size-large wp-post-image" alt="" srcset="<%= gallery.path%> 1024w, <%= gallery.path %> 300w, <%= gallery.path %>" sizes="(max-width: 640px) 100vw, 640px" /></a>
+<div class="post-content">
+<a href="<%= gallery.path %>" class="popup-link"><i class="fa fa-eye"></i></a>
+<a href="/galleries/<%= gallery.id %>"><i class="fa fa-link"></i></a>
+<h2><%= link_to gallery.title, gallery %></h2>
+</div>
+</div><!-- .masonry-thumbnail -->
+</article><!-- #post-## -->
+<% end %>
+
+<% @articles.each do | article | %>
+<% next if !article.image.present?%>
+<article id="post-<%= article.id %>" class="masonry-entry post-<%= article.id %> post type-post status-publish format-standard has-post-thumbnail hentry category-fashion">
+
+<div class="masonry-thumbnail post-item">
+<a href="<%= article.image %>" class="post-thumb popup-link">
+<img width="640" height="426" src="<%= article.image %>" class="attachment-large size-large wp-post-image" alt="" srcset="<%= article.image %> 1024w, <%= article.image %> 300w, <%= article.image %>" sizes="(max-width: 640px) 100vw, 640px" /></a>
+<div class="post-content">
+<a href="<%= article.image %>" class="popup-link"><i class="fa fa-eye"></i></a>
+<a href="/articles/<%= article.id %>"><i class="fa fa-link"></i></a>
+<h2><%= link_to article.title, article %></h2>
+</div>
+</div><!-- .masonry-thumbnail -->
+</article><!-- #post-## -->
+<% end %>
+
+</div><!-- #masonry-loop --></div><!-- .masonry-wrapper -->
+
+<nav class="navigation posts-navigation" role="navigation" aria-label="Posts">
+<h2 class="screen-reader-text">Posts navigation</h2>
+<div class="nav-links">
+<%= paginate @galleries %>
+</div>
+</nav>
+
+</main><!-- #main -->
+</div><!-- #primary -->
+
+</div><!-- .inner-wrapper --></div><!-- .container --></div><!-- #content -->
+
